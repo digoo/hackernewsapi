@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// import Comments from './Comments';
+import hnLogo from '../assets/images/hacker-news-logo-png-15-transparent.png';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 export default function Stories() {
   const [topStories, setTopStories] = useState([]);
   const [stories, setStories] = useState([]);
+  const [comments, setComments] = useState({});
 
   // useEffect to fetch topstories only
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Stories() {
   useEffect(() => {
     // Function to fetch hackernews stories comments. (thanks god I made it)
     const fetchComments = async comment => {
-      console.log(`Fetching comment ${comment}`);
+      // console.log(`Fetching comment ${comment}`);
       const CommentInfo = await axios(comment); // API call to get stories info from hackernews.
       return {
         by: CommentInfo.data.by,
@@ -47,7 +48,7 @@ export default function Stories() {
 
     // Function to fetch hackernews stories. (thanks god I made it)
     const fetchStories = async story => {
-      console.log(`Fetching story ${story}`);
+      // console.log(`Fetching story ${story}`);
       const storiesInfo = await axios(story); // API call to get stories info from hackernews.
 
       // Transform the comments ids into real urls
@@ -60,7 +61,6 @@ export default function Stories() {
           )
         );
       }
-      console.log(commentsUrl);
 
       const request = commentsUrl.map(comment =>
         fetchComments(comment).then(comment2 => {
@@ -68,14 +68,13 @@ export default function Stories() {
         })
       );
 
-      const promises = await Promise.all(request.slice(0, 20));
-      const realComments = promises;
-      console.log(realComments);
+      // Collecting all comments and slice it in max 20 as requested
+      const realComments = await Promise.all(request.slice(0, 20));
 
       return {
         by: storiesInfo.data.by,
         id: storiesInfo.data.id,
-        comments: realComments || '', // append real urls instead just ids (next step is to append real comments)
+        comments: realComments || '', // append real comments or empty value
         score: storiesInfo.data.score,
         time: storiesInfo.data.time,
         title: storiesInfo.data.title,
@@ -99,23 +98,60 @@ export default function Stories() {
     });
   }, [topStories]);
 
+  const toggleComment = id => {
+    setComments(prev =>
+      !prev[id] ? { ...prev, [id]: true } : { ...prev, [id]: false }
+    );
+  };
+
   return (
     <>
-      <ul>
-        {console.log(stories)}
-        {stories &&
-          stories.length > 0 &&
+      <Container>
+        {/* {console.log(stories)} */}
+        <div className="logo">
+          <img src={hnLogo} alt="HnLogo" />
+        </div>
+        <hr />
+        {stories && stories.length > 0 ? (
           stories.map(story => (
-            <div key={story.id}>
+            <div className="stories" key={story.id}>
               {story.title}
-              {story.comments &&
-                story.comments.length > 0 &&
-                story.comments.map(comment => (
-                  <div key={comment.id}>{comment.text}</div>
-                ))}
+              <div className="buttons">
+                <a href={story.url} target="_blank" rel="noopener noreferrer">
+                  <input name="Url" type="button" value="Url link" />
+                </a>
+                {story.comments ? (
+                  <input
+                    name="Comment"
+                    type="button"
+                    value="Comment"
+                    onClick={() => toggleComment(story.id)}
+                  />
+                ) : null}
+              </div>
+              {comments[story.id]
+                ? story.comments &&
+                  story.comments.length > 0 &&
+                  story.comments.map(comment => (
+                    <div className="comments" key={comment.id}>
+                      {comment.text}
+                    </div>
+                  ))
+                : null}
+              {comments[story.id] ? (
+                <input
+                  name="Comment"
+                  type="button"
+                  value="Close Comments"
+                  onClick={() => toggleComment(story.id)}
+                />
+              ) : null}
             </div>
-          ))}
-      </ul>
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
+      </Container>
     </>
   );
 }
