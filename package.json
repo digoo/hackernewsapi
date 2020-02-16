@@ -2,8 +2,7 @@
   "name": "hackernewsapi",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost:3000/",
-  "homepage2": "https://digoo.github.io/hackernewsapi/",
+  "homepage": "https://digoo.github.io/hackernewsapi/",
   "dependencies": {
     "@material-ui/core": "^4.9.2",
     "@testing-library/jest-dom": "^4.2.4",
