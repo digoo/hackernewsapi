@@ -15,11 +15,30 @@ export default createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
+    font-size: 62.5%;
+
+    @media (max-width: 1080px) {
+    font-size: 58%;
+    }
+    @media (max-width: 720px) {
+    font-size: 54%;
+    }
+    @media (max-width: 560px) {
+    font-size: 46%;
+    }
+    @media (max-width: 480px) {
+    font-size: 42%;
+    }
+    @media (max-width: 400px) {
+    font-size: 38%;
+    }
   }
+
+
 
 body {
   height: 100%;
-  background: #eee;
+  background: #fff;
   -webkit-font-smoothing: antialiased;
 }
 
