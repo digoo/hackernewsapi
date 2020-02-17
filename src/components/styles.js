@@ -203,7 +203,7 @@ export const Container = styled.div`
         justify-content: flex-start;
         margin-bottom: 15px;
         margin-left: 4.5rem;
-        margin-right: 1rem;
+        margin-right: 3rem;
 
         &:last-child {
           margin-bottom: 0;
@@ -256,6 +256,7 @@ export const Container = styled.div`
           text-align: justify;
           display: flex;
           word-wrap: break-word;
+          word-break: break-all;
         }
       }
       input {
