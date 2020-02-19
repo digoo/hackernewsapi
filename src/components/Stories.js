@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// import iconv from 'iconv-lite';
+import he from 'he';
+
 import { FaSpinner } from 'react-icons/fa';
 import hnLogo from '../assets/images/hacker-news-logo-png-15-transparent.png';
 import score from '../assets/images/score.svg';
@@ -48,7 +51,6 @@ export default function Stories() {
     const fetchComments = async comment => {
       // console.log(`Fetching comment ${comment}`); // left it here for future testing purpose
       const CommentInfo = await axios(comment); // Used axios here to do API call to get story's comments from hackernews.
-      // const ctype = CommentInfo.headers['content-type'];
 
       if (!CommentInfo.data) {
         return {
@@ -61,7 +63,7 @@ export default function Stories() {
       }
 
       return {
-        by: CommentInfo.data.by || 'Deleted',
+        by: CommentInfo.data.by || '',
         id: CommentInfo.data.id || '',
         commentOfComment: CommentInfo.data.kids || '',
         parent: CommentInfo.data.parent || '',
@@ -208,7 +210,9 @@ export default function Stories() {
                           </div>
                         </div>
                         <hr />
-                        <div className="commenttext">{comment.text}</div>
+                        <div className="commenttext">
+                          {he.unescape(comment.text)}
+                        </div>
                       </div>
                     ))
                   : null}
