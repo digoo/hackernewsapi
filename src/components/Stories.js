@@ -163,15 +163,6 @@ export default function Stories() {
                       >
                         {story.title}
                       </div>
-                      <div className="link">
-                        <a
-                          href={story.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          &nbsp; <img src={link} alt={story.url} />
-                        </a>
-                      </div>
                     </div>
                     <div className="author">
                       <p className="time">Some time ago - by&nbsp;</p>
@@ -179,11 +170,22 @@ export default function Stories() {
                     </div>
                   </div>
                   <div className="storyStatus">
+                    <hr className="titleStatus" />
                     <div className="rate">
                       <img src={score} alt="" /> {story.score}&nbsp;
                     </div>
                     <div className="totalComments">
                       <img src={commentImg} alt="" /> {story.comments.length}
+                    </div>
+                    <hr />
+                    <div className="link">
+                      <a
+                        href={story.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img src={link} alt={story.url} />
+                      </a>
                     </div>
                   </div>
                 </div>

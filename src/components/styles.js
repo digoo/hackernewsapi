@@ -98,24 +98,6 @@ export const Container = styled.div`
               font-weight: bold;
               color: #ea5b0c;
             }
-
-            div.link a img {
-              width: 100%;
-              height: 100%;
-              max-width: 15px;
-              max-height: 15px;
-              margin-right: 3rem;
-
-              @media (max-width: 480px) {
-                max-width: 14px;
-                max-height: 14px;
-              }
-
-              @media (max-width: 400px) {
-                max-width: 12px;
-                max-height: 12px;
-              }
-            }
           }
 
           div.author {
@@ -138,25 +120,42 @@ export const Container = styled.div`
         div.storyStatus {
           display: flex;
           flex-direction: row;
+          align-items: center;
+
+          hr.titleStatus {
+            display: none;
+
+            @media (max-width: 760px) {
+              display: flex;
+              margin: 0 20px;
+              width: 1px;
+              height: 30px;
+              border: 1px solid #eee;
+              background: #eee;
+            }
+
+            @media (max-width: 660px) {
+              margin: 0 10px;
+            }
+          }
 
           div.rate {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             font-size: 1.2rem;
             img {
               width: 100%;
               height: 100%;
               max-width: 10px;
               max-height: 10px;
-              margin-top: 5px;
               margin-right: 5px;
 
-              @media (max-width: 480px) {
+              @media (max-width: 560px) {
                 max-width: 9px;
                 max-height: 9px;
               }
 
-              @media (max-width: 400px) {
+              @media (max-width: 480px) {
                 max-width: 8px;
                 max-height: 8px;
               }
@@ -165,31 +164,65 @@ export const Container = styled.div`
 
           div.totalComments {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             font-size: 1.2rem;
-            margin-right: 3rem;
 
             img {
               width: 100%;
               height: 100%;
               max-width: 10px;
               max-height: 10px;
-              margin-top: 5px;
+              margin-top: 2px;
               margin-right: 5px;
 
-              @media (max-width: 480px) {
+              @media (max-width: 560px) {
                 max-width: 9px;
                 max-height: 9px;
               }
 
-              @media (max-width: 400px) {
+              @media (max-width: 480px) {
                 max-width: 8px;
                 max-height: 8px;
               }
             }
           }
+
+          hr {
+            margin: 0 30px;
+            width: 1px;
+            height: 30px;
+            border: 1px solid #eee;
+            background: #eee;
+
+            @media (max-width: 720px) {
+              margin: 0 20px;
+            }
+
+            @media (max-width: 520px) {
+              margin: 0 10px;
+            }
+          }
+
+          div.link a img {
+            width: 100%;
+            height: 100%;
+            max-width: 20px;
+            max-height: 20px;
+            margin-right: 4rem;
+
+            @media (max-width: 480px) {
+              max-width: 14px;
+              max-height: 14px;
+            }
+
+            @media (max-width: 400px) {
+              max-width: 12px;
+              max-height: 12px;
+            }
+          }
         }
       }
+
       hr {
         margin: 10px 20px 15px 80px;
         border: 1px solid #eee;
