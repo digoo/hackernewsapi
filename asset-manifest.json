@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/hackernewsapi/static/js/main.265d9b8c.chunk.js",
-    "main.js.map": "/hackernewsapi/static/js/main.265d9b8c.chunk.js.map",
+    "main.js": "/hackernewsapi/static/js/main.bf42fb9d.chunk.js",
+    "main.js.map": "/hackernewsapi/static/js/main.bf42fb9d.chunk.js.map",
     "runtime-main.js": "/hackernewsapi/static/js/runtime-main.e6431776.js",
     "runtime-main.js.map": "/hackernewsapi/static/js/runtime-main.e6431776.js.map",
     "static/js/2.9db3e134.chunk.js": "/hackernewsapi/static/js/2.9db3e134.chunk.js",
     "static/js/2.9db3e134.chunk.js.map": "/hackernewsapi/static/js/2.9db3e134.chunk.js.map",
     "index.html": "/hackernewsapi/index.html",
-    "precache-manifest.28f67bcda08538607a7604f48de70113.js": "/hackernewsapi/precache-manifest.28f67bcda08538607a7604f48de70113.js",
+    "precache-manifest.fd7b332aca67ddfd9b091d5800641a3f.js": "/hackernewsapi/precache-manifest.fd7b332aca67ddfd9b091d5800641a3f.js",
     "service-worker.js": "/hackernewsapi/service-worker.js",
     "static/js/2.9db3e134.chunk.js.LICENSE.txt": "/hackernewsapi/static/js/2.9db3e134.chunk.js.LICENSE.txt",
     "static/media/comment.svg": "/hackernewsapi/static/media/comment.14cee6f7.svg",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime-main.e6431776.js",
     "static/js/2.9db3e134.chunk.js",
-    "static/js/main.265d9b8c.chunk.js"
+    "static/js/main.bf42fb9d.chunk.js"
   ]
 }
