@@ -249,6 +249,7 @@ export const Container = styled.div`
           border-radius: 2px;
           margin-right: 20px;
           margin-left: 55px;
+          margin-top: 0px;
         }
 
         div.commenttext {

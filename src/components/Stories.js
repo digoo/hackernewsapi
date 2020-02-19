@@ -48,12 +48,24 @@ export default function Stories() {
     const fetchComments = async comment => {
       // console.log(`Fetching comment ${comment}`); // left it here for future testing purpose
       const CommentInfo = await axios(comment); // Used axios here to do API call to get story's comments from hackernews.
+      // const ctype = CommentInfo.headers['content-type'];
+
+      if (!CommentInfo.data) {
+        return {
+          by: 'Deleted',
+          id: 'Deleted',
+          commentOfComment: {},
+          parent: 'Deleted',
+          text: 'Deleted',
+        };
+      }
+
       return {
-        by: CommentInfo.data.by,
-        id: CommentInfo.data.id,
+        by: CommentInfo.data.by || 'Deleted',
+        id: CommentInfo.data.id || '',
         commentOfComment: CommentInfo.data.kids || '',
-        parent: CommentInfo.data.parent,
-        text: CommentInfo.data.text,
+        parent: CommentInfo.data.parent || '',
+        text: CommentInfo.data.text || '',
       };
     };
 
@@ -187,7 +199,10 @@ export default function Stories() {
                             <p className="commauthor">{comment.by}</p>
                           </div>
                           <div className="othercomments">
-                            Comments: {comment.commentOfComment.length}
+                            Comments:
+                            {comment && comment.commentOfComment === Array
+                              ? comment.commentOfComment.length
+                              : 0}
                           </div>
                         </div>
                         <hr />
